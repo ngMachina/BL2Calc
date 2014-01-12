@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+        <script src="bl2cal.js"></script>
+    </head>
+    <body>
+        <div ng-controller="BL2Ctrl">
+            <div class="block left">
+                <label>Damage:</label>
+                <input type="text" ng-model="damage">
+                <br/>
+                <label>Accuracy:</label>
+                <input type="text" ng-model="accuracy">
+                <br/>
+                <label>Fire Rate:</label>
+                <input type="text" ng-model="fireRate">
+                <br/>
+                <label>Reload Speed:</label>
+                <input type="text" ng-model="reloadSpeed">
+                <br/>
+                <label>Magazine Size:</label>
+                <input type="text" ng-model="magSize">
+                <br/>
+            </div>
+            <div class="block right">
+                <h1>DPS: {{dps() | number:2}}</h1>
+                <h1>Accuracy DPS: {{dpsacc() | number:2}}</h1>
+                <h1>SPM: {{spm() | number:2}}</h1>
+                <h1>Sustained DPS: {{susDps() | number:2}}</h1>
+                <h1>Acc. Sustained DPS: {{susAcc() | number:2}}</h1>
+            </div>
+        </div>
+    </body>
+</html>
