@@ -6,10 +6,10 @@
         <script src="bl2cal.js"></script>
     </head>
     <body>
-        <div ng-controller="BL2Ctrl">
+        <div ng-controller="BL2Ctrl" class="cf">
             <div class="block left">
                 <label>Damage:</label>
-                <input type="text" ng-model="damage">
+                <input type="text" ng-model="damage">X<input type="text" ng-model="dmgrounds" size="2">
                 <br/>
                 <label>Accuracy:</label>
                 <input type="text" ng-model="accuracy">
@@ -22,14 +22,46 @@
                 <br/>
                 <label>Magazine Size:</label>
                 <input type="text" ng-model="magSize">
+                <hr>
+                <label>Fire Type:</label>
+                <select ng-model="fire" ng-options="f for f in fireType"></select>
                 <br/>
             </div>
             <div class="block right">
-                <h1>DPS: {{dps() | number:2}}</h1>
-                <h1>Accuracy DPS: {{dpsacc() | number:2}}</h1>
-                <h1>SPM: {{spm() | number:2}}</h1>
-                <h1>Sustained DPS: {{susDps() | number:2}}</h1>
-                <h1>Acc. Sustained DPS: {{susAcc() | number:2}}</h1>
+                <h1>DPS: {{dps(damage,dmgrounds,fireRate) | number:2}}</h1>
+                <h1>Accuracy DPS: {{dpsacc(damage,dmgrounds,accuracy,fireRate) | number:2}}</h1>
+                <h1>SPM: {{spm(magSize,fireRate,reloadSpeed) | number:2}}</h1>
+                <h1>Sustained DPS: {{susDps(damage,dmgrounds,magSize,fireRate,reloadSpeed) | number:2}}</h1>
+                <h1>Acc. Sustained DPS: {{susAcc(damage,dmgrounds,accuracy,magSize,fireRate,reloadSpeed) | number:2}}</h1>
+            </div>
+        </div>
+        <div ng-controller="BL2Ctrl" class="bottom">
+            <div class="block left">
+                <label>Damage:</label>
+                <input type="text" ng-model="damage2">X<input type="text" ng-model="dmgrounds2" size="2">
+                <br/>
+                <label>Accuracy:</label>
+                <input type="text" ng-model="accuracy2">
+                <br/>
+                <label>Fire Rate:</label>
+                <input type="text" ng-model="fireRate2">
+                <br/>
+                <label>Reload Speed:</label>
+                <input type="text" ng-model="reloadSpeed2">
+                <br/>
+                <label>Magazine Size:</label>
+                <input type="text" ng-model="magSize2">
+                <hr>
+                <label>Fire Type:</label>
+                <select ng-model="fire2" ng-options="f for f in fireType"></select>
+                <br/>
+            </div>
+            <div class="block right">
+                <h1>DPS: {{dps(damage2,dmgrounds2,fireRate2) | number:2}}</h1>
+                <h1>Accuracy DPS: {{dpsacc(damage2,dmgrounds2,accuracy2,fireRate2) | number:2}}</h1>
+                <h1>SPM: {{spm(magSize2,fireRate2,reloadSpeed2) | number:2}}</h1>
+                <h1>Sustained DPS: {{susDps(damage2,dmgrounds2,magSize2,fireRate2,reloadSpeed2) | number:2}}</h1>
+                <h1>Acc. Sustained DPS: {{susAcc(damage2,dmgrounds2,accuracy2,magSize2,fireRate2,reloadSpeed2) | number:2}}</h1>
             </div>
         </div>
     </body>

@@ -16,3 +16,13 @@ h1 {
 	margin-left: -1px;
 	border-left: 1px solid black;
 }
+
+.bottom {
+	border-top: 1px solid black;
+}
+
+.cf:after {
+	content: "";
+	display: table;
+	clear: both;
+}
