@@ -1,48 +1,15 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="app">
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
-        <script src="bl2cal.js"></script>
+        <script src="app.js"></script>
     </head>
     <body>
         <div ng-controller="BL2Ctrl" class="cf">
-            <div class="block left">
-                <label>Damge:</label>
-                <input type="text" class="tb" ng-model="weapon[0].dmg">X<input type="text" class="tb"ng-model="weapon[0].dmgrnds" size="2">
-                <br/>
-                <label>Accuracy:</label>
-                <input type="text" class="tb" ng-model="weapon[0].acc">
-                <br/>
-                <label>Fire Rate:</label>
-                <input type="text" class="tb" ng-model="weapon[0].rate">
-                <br/>
-                <label>Reload Speed:</label>
-                <input type="text" class="tb" ng-model="weapon[0].reload">
-                <br/>
-                <label>Magazine Size:</label>
-                <input type="text" class="tb" ng-model="weapon[0].mag">
-                <hr>
-                <label>Fire Type:</label>
-                <select ng-model="weapon[0].fire" class="tb" ng-options="f for f in fireType"></select>
-                <br/>
-                <label>Element:</label>
-                <select ng-model="element" class="tb" ng-options="e.name for e in elementType"></select>
-                <br/>
-                <label>Element dmg/sec:</label>
-                <input type="text" class="tb" ng-model="weapon[0].eledmg">
-                <br/>
-                <label>Element Chance:</label>
-                <input type="text" class="tb" ng-model="weapon[0].eleper">
-                <hr>
-                <div class="stats">
-                    <p>SPM: {{spm(weapon[0].mag,weapon[0].rate,weapon[0].reload,weapon[0].fire) | number:2}}</p>
-                    <p>Sustained DPS: {{susDps(weapon[0].dmg,weapon[0].dmgrnds,weapon[0].mag,weapon[0].rate,weapon[0].reload,weapon[0].fire) | number:2}}</p>
-                    <p>Acc. Sustained DPS: {{susAcc(weapon[0].dmg,weapon[0].dmgrnds,weapon[0].acc,weapon[0].mag,weapon[0].rate,weapon[0].reload,weapon[0].fire) | number:2}}</p>
-                    <p>{{element.name}} DPS: {{eledmg(weapon[0].eledmg,element,weapon[0].eleper,weapon[0].mag,weapon[0].rate,weapon[0].reload,weapon[0].fire) | number:2}}</p>
-                    <p>Total DPS: {{totaldps(weapon[0].dmg,weapon[0].dmgrnds,weapon[0].acc,weapon[0].mag,weapon[0].rate,weapon[0].reload,weapon[0].fire,weapon[0].eledmg,element,weapon[0].eleper) | number:2}}</p>
-                </div>
-            </div>
+            <weaponblock info="weapon[0]"></weaponblock>
+            <weaponblock info="weapon[1]"></weaponblock>
+            <weaponblock info=""></weaponblock>
         </div>
     </body>
 </html>

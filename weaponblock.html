@@ -1,0 +1,37 @@
+            <div class="block left">
+                <label>Damge:</label>
+                <input type="text" class="tb" ng-model="weaponStats.dmg">X<input type="text" class="tb"ng-model="weaponStats.dmgrnds" size="2">
+                <br/>
+                <label>Accuracy:</label>
+                <input type="text" class="tb" ng-model="weaponStats.acc">
+                <br/>
+                <label>Fire Rate:</label>
+                <input type="text" class="tb" ng-model="weaponStats.rate">
+                <br/>
+                <label>Reload Speed:</label>
+                <input type="text" class="tb" ng-model="weaponStats.reload">
+                <br/>
+                <label>Magazine Size:</label>
+                <input type="text" class="tb" ng-model="weaponStats.mag">
+                <hr>
+                <label>Fire Type:</label>
+                <select ng-model="weaponStats.fire" class="tb" ng-options="f for f in fireType"></select>
+                <br/>
+                <label>Consumes <input type="text" class="tb" ng-model="weaponStats.rounds" size="2"> ammo per shot</label>
+                <br/>
+                <label>Element:</label>
+                <select ng-model="weaponStats.ele" class="tb" ng-options="e.type for e in elementType"></select>
+                <br/>
+                <label>{{weaponStats.ele.name}} dmg/sec:</label>
+                <input type="text" class="tb" ng-model="weaponStats.eledmg">
+                <br/>
+                <label>Chance to {{weaponStats.ele.verb}}:</label>
+                <input type="text" class="tb" ng-model="weaponStats.eleper" size="4">
+                <hr>
+                <div class="stats">
+                    <p>SPM: {{spm(weaponStats.mag,weaponStats.rate,weaponStats.reload,weaponStats.fire,weaponStats.rounds) | number:2}}</p>
+                    <p>Sustained DPS: {{dps(weaponStats.dmg,weaponStats.dmgrnds,weaponStats.acc) | number:2}}</p>
+                    <p>{{weaponStats.ele.name}} DPS: {{eledmg(weaponStats.eledmg,weaponStats.ele,weaponStats.eleper) | number:2}}</p>
+                    <p>Total DPS: {{totaldps(weaponStats.dmg,weaponStats.dmgrnds,weaponStats.acc,weaponStats.mag,weaponStats.rate,weaponStats.reload,weaponStats.fire,weaponStats.rounds,weaponStats.eledmg,weaponStats.ele,weaponStats.eleper) | number:2}}</p>
+                </div>
+            </div>
