@@ -8,9 +8,11 @@
     <body>
         <div ng-controller="BL2Ctrl" class="cf">
             <div class="cf">
-                <weaponblock info="weapons[0]"></weaponblock>
-                <weaponblock info="weapons[1]"></weaponblock>
-                <weaponblock info="weapons[2]"></weaponblock>
+
+              <!--Ng-Repeat! It's like the second best thing in angular! This basically says
+              for each weapon in your array of weapons, make a weaponblock element - and you
+              can just pass in the individual weapon object into info-->
+                <weaponblock ng-repeat="weapon in weapons" info="weapon"></weaponblock>
             </div>
         </div>
     </body>
