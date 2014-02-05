@@ -1,4 +1,6 @@
             <div class="block left">
+                <input type="text" class="tb" ng-model="weaponStats.name">
+                <br/>
                 <label>Damage:</label>
                 <input type="text" class="tb" ng-model="weaponStats.dmg">X<input type="text" class="tb"ng-model="weaponStats.dmgrnds" size="2">
                 <br/>
@@ -23,7 +25,7 @@
                 <select ng-model="weaponStats.ele" class="tb" ng-options="e.type for e in elementType"></select>
                 <br/>
                 <label>{{weaponStats.ele.name}} dmg/sec:</label>
-                <input type="text" class="tb" ng-model="weaponStats.eledmg">
+                <input type="text" class="tb" ng-model="weaponStats.eledmg" size="10">
                 <br/>
                 <label>Chance to {{weaponStats.ele.verb}}:</label>
                 <input type="text" class="tb" ng-model="weaponStats.eleper" size="4">
@@ -31,7 +33,7 @@
                 <div class="stats">
                     <p>SPM: {{spm(weaponStats.mag,weaponStats.rate,weaponStats.reload,weaponStats.fire,weaponStats.rounds) | number:2}}</p>
                     <p>Sustained DPS: {{dps(weaponStats.dmg,weaponStats.dmgrnds,weaponStats.acc) | number:2}}</p>
-                    <p>{{weaponStats.ele.name}} DPS: {{eledmg(weaponStats.eledmg,weaponStats.ele,weaponStats.eleper) | number:2}}</p>
-                    <p>Total DPS: {{totaldps(weaponStats.dmg,weaponStats.dmgrnds,weaponStats.acc,weaponStats.mag,weaponStats.rate,weaponStats.reload,weaponStats.fire,weaponStats.rounds,weaponStats.eledmg,weaponStats.ele,weaponStats.eleper) | number:2}}</p>
+                    <p>{{weaponStats.ele.name}} DPS: {{eledmg(weaponStats.eledmg,weaponStats.ele,weaponStats.eleper,weaponStats.ele.dur) | number:2}}</p>
+                    <p>Total DPS: {{totaldps(weaponStats.eledmg,weaponStats.ele,weaponStats.eleper,weaponStats.ele.dur,weaponStats.dmg,weaponStats.dmgrnds,weaponStats.acc) | number:2}}</p>
                 </div>
             </div>

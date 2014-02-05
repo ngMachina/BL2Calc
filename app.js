@@ -1,6 +1,6 @@
 angular.module('app', [])
 
-.controller('BL2Ctrl', function($scope) {
+.controller('BL2Ctrl', function($scope, $http) {
 
 	$scope.fireType = ["Semi-Auto","Automatic"];
 	$scope.elementType = [
@@ -11,30 +11,10 @@ angular.module('app', [])
 	{type:"Slag",name:"Slag",verb:"Slag",dur:8}
 	];
 
-	$scope.weapon = [{
-		dmg:480,
-		dmgrnds:1,
-		acc:96.4,
-		rate:17.1,
-		reload:2.3,
-		mag:8,
-		fire:$scope.fireType[0],
-		rounds:1,
-		ele:$scope.elementType[1],
-		eledmg:133,
-		eleper:12},{
-		dmg:11590,
-		dmgrnds:1,
-		acc:92,
-		rate:4.4,
-		reload:2.2,
-		mag:29,
-		fire:$scope.fireType[1],
-		rounds:2,
-		ele:$scope.elementType[3],
-		eledmg:3605.9,
-		eleper:14.4
-		}];
+	$http.get('weapon.json').success(function(data) {
+		$scope.weapons = data;
+
+	});
 
 	$scope.semiCap = function(fireRate, fireType) {
 		var rate = fireRate;
@@ -73,8 +53,8 @@ angular.module('app', [])
 			return (Math.floor((spm*dmgrnds)*$scope.adjAcc(acc))*dmg)/60;
 		};
 
-		$scope.eledmg = function(elementdmg,element,elementper) {
-			var dmg = ((elementdmg*element.dur)*(spm*$scope.adjAcc(elementper)))/60;
+		$scope.eledmg = function(elementdmg,element,elementper,elementdur) {
+			var dmg = ((elementdmg*elementdur)*(spm*$scope.adjAcc(elementper)))/60;
 
 			if (dmg > elementdmg) {
 				return elementdmg;
@@ -86,12 +66,8 @@ angular.module('app', [])
 		return spm;
 	};
 
-	$scope.totaldps = function(dmg,dmgrnds,acc,magSize,fireRate,reload,fireType,rounds,elementdmg,element,elementper) {
-		return parseFloat($scope.eledmg(elementdmg,element,elementper,magSize,fireRate,reload,fireType,rounds)) + $scope.dps(dmg,dmgrnds,acc,magSize,fireRate,reload,fireType,rounds);
-	};
-
-	$scope.dpstest = function(dmg,acc) {
-		return dmg*acc;
+	$scope.totaldps = function(elementdmg,element,elementper,elementdur,dmg,dmgrnds,acc) {
+		return parseFloat($scope.eledmg(elementdmg,element,elementper,elementdur)) + $scope.dps(dmg,dmgrnds,acc);
 	};
 })
 
@@ -103,6 +79,6 @@ angular.module('app', [])
 		scope: {
 			weaponStats: '=info'
 		},
-		templateUrl:'weaponblock.html'
+		templateUrl:'weaponblock.html',
 	};
 });

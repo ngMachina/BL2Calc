@@ -1,0 +1,59 @@
+[
+	{
+		"name":"Sublime Railer",
+		"type":"Sniper Rifle",
+		"dmg":552,
+		"dmgrnds":1,
+		"acc":95.1,
+		"rate":3,
+		"reload":4,
+		"mag":6,
+		"fire":"Automatic",
+		"rounds":1,
+		"ele":{
+			"type":"Shock",
+			"name":"Electrocute",
+			"verb":"shock",
+			"dur":2},
+		"eledmg":81.8,
+		"eleper":45
+	},
+	{
+		"name":"Resource Competition",
+		"type":"Sniper Rifle",
+		"dmg":399,
+		"dmgrnds":1,
+		"acc":94.4,
+		"rate":1.3,
+		"reload":4.6,
+		"mag":10,
+		"fire":"Automatic",
+		"rounds":1,
+		"ele":{
+			"type":"Corrosive",
+			"name":"Corrosive",
+			"verb":"corrode",
+			"dur":8},
+		"eledmg":104.2,
+		"eleper":34.5
+	},
+	{
+		"name":"Resource Competition",
+		"type":"Sniper Rifle",
+		"dmg":399,
+		"dmgrnds":1,
+		"acc":94.4,
+		"rate":1.3,
+		"reload":4.6,
+		"mag":10,
+		"fire":"Automatic",
+		"rounds":1,
+		"ele":{
+			"type":"Corrosive",
+			"name":"Corrosive",
+			"verb":"corrode",
+			"dur":8},
+		"eledmg":104.2,
+		"eleper":34.5
+	}
+]
